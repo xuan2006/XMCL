@@ -1,0 +1,30 @@
+﻿<Window x:Class="XMCL.Core.GuideJVM"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XMCL.Core"
+        mc:Ignorable="d"
+        Title="JVM参数创建向导" Height="416" Width="380">
+    <Grid Background="#FF1E1E1E">
+        <Label Content="选择参数" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontSize="16" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T12" Content="-XX:G1HeapRegionSize=16M" HorizontalAlignment="Left" Margin="16,323,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T11" Content="-XX:MaxGCPauseMillis=50" HorizontalAlignment="Left" Margin="16,303,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T10" Content="-XX:G1ReservePercent=20" HorizontalAlignment="Left" Margin="16,283,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T9" Content="-XX:G1NewSizePercent=20" HorizontalAlignment="Left" Margin="16,263,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T8" Content="-Dfml.ignorePatchDiscrepancies=true" HorizontalAlignment="Left" Margin="16,243,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T7" Content="-Dfml.ignoreInvalidMinecraftCertificates=true" HorizontalAlignment="Left" Margin="16,223,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T6" Content="-XX:+UnlockExperimentalVMOptions" HorizontalAlignment="Left" Margin="16,203,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T5" Content="-XX:HeapDumpPath=MojangTricksIntelDriversForPerformanc&#xA;e_javaw.exe_minecraft.exe.heapdump" HorizontalAlignment="Left" Margin="16,165,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light" Height="38" Width="346"/>
+        <CheckBox x:Name="T4" Content="-XX:-OmitStackTraceInFastThrow" HorizontalAlignment="Left" Margin="16,126,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T3" Content="-XX:-UseAdaptiveSizePolicy" HorizontalAlignment="Left" Margin="16,89,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T2" Content="-XX:+UseG1GC" HorizontalAlignment="Left" Margin="16,69,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <CheckBox x:Name="T1" Content="-Xmn128m" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Microsoft YaHei Light"/>
+        <Label Content="新生代堆大小为128MB" HorizontalAlignment="Left" Height="24" Margin="100,45,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
+        <Label Content="开启G1收集器" HorizontalAlignment="Left" Height="24" Margin="122,65,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
+        <Label Content="自动选择年轻代区大小和相应的Survivor区比例" HorizontalAlignment="Left" Height="24" Margin="32,104,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
+        <Label Content="省略异常栈信息从而快速抛出" HorizontalAlignment="Left" Height="24" Margin="32,141,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
+        <Button Style="{StaticResource ButtonStyle1}" Content="完成" HorizontalAlignment="Left" Margin="288,353,0,0" VerticalAlignment="Top" Width="74" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Click="Button_Click"/>
+
+    </Grid>
+</Window>
