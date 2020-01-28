@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Text;
+using System.Windows;
 namespace XMCL.Core
 {
     public class Check
@@ -29,18 +30,20 @@ namespace XMCL.Core
             }
             if (Check.CanLauch)
             {
-                downLoadHelper.Hide();
                 process.StartInfo.FileName = Value.JavaPath;
                 process.StartInfo.Arguments = A;
                 process.Start();
             }
             else
             {
-                downLoadHelper.Hide();
                 downLoadHelper.Owner.Activate();
                 System.Windows.MessageBox.Show(Error.ToString());
-                Error.Clear();
+                Error = null;
+                Check.CanLauch = true;
             }
+            Window window = downLoadHelper.Owner;
+            downLoadHelper = new DownLoadHelper();
+            downLoadHelper.Owner = window;
         }
         public static void Stop()
         {

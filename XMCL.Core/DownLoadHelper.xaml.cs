@@ -84,11 +84,11 @@ namespace XMCL.Core
                     Label1.Content = "下载完成";
                     if (a == 2)
                     {
-                        this.Hide();
                         JarsList.Clear();
                         JarURLsList.Clear();
                         AssetsList.Clear();
                         AssetURLsList.Clear();
+                        Close();
                     }
                 }));
             });
@@ -105,11 +105,11 @@ namespace XMCL.Core
                     Label2.Content = "下载完成";
                     if (a == 2)
                     {
-                        this.Hide();
                         JarsList.Clear();
                         JarURLsList.Clear();
                         AssetsList.Clear();
                         AssetURLsList.Clear();
+                        Close();
                     }
                 }));
             });

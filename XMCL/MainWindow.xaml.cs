@@ -49,11 +49,6 @@ namespace XMCL
                 { this.ResizeMode = windowMode; }
                 this.UpdateLayout();
             }
-            if (Game.downLoadHelper.Visibility == Visibility.Visible)
-            {
-                Game.downLoadHelper.Left = Left + 225;
-                Game.downLoadHelper.Top = Top + 200;
-            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
