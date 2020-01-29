@@ -38,7 +38,7 @@ namespace XMCL.Core
             {
                 downLoadHelper.Owner.Activate();
                 System.Windows.MessageBox.Show(Error.ToString());
-                Error = null;
+                Error = new StringBuilder();
                 Check.CanLauch = true;
             }
             Window window = downLoadHelper.Owner;
