@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using XMCL.Core;
-using System.IO;
 
 namespace XMCL
 {
@@ -45,14 +45,14 @@ namespace XMCL
             Game.downLoadHelper.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             WindowLogin.WindowLoginOwner = this;
             Background = System.Windows.SystemParameters.WindowGlassBrush;
-            if (System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory()+"\\XMCL.exe.config"))
+            if (System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\XMCL.json"))
             { }
             else
             {
-                FileStream fs1 = new FileStream(System.Environment.CurrentDirectory + "\\XMCL.exe.config", FileMode.Create, FileAccess.ReadWrite);
+                FileStream fs1 = new FileStream(System.Environment.CurrentDirectory + "\\XMCL.json", FileMode.Create, FileAccess.ReadWrite);
                 try
                 {
-                    fs1.Write(Resource1.XMCL_exe, 0, Resource1.XMCL_exe.Length);
+                    fs1.Write(Resource1.XMCL, 0, Resource1.XMCL.Length);
                     fs1.Flush();
                     fs1.Close();
                 }
@@ -60,7 +60,6 @@ namespace XMCL
                 {
                     throw ex;
                 }
-                System.Configuration.ConfigurationManager.RefreshSection("appSettings");
             }
         }
 

@@ -5,6 +5,48 @@ using System.Text;
 
 namespace XMCL.Core
 {
+    public class Json
+    {
+        static string a = System.IO.Directory.GetCurrentDirectory() + "\\XMCL.json";
+        public static string Read(string Section, string Name)
+        {
+            if (System.IO.File.Exists(a))
+            {
+                string b = System.IO.File.ReadAllText(a);
+                try
+                {
+                    return JObject.Parse(b)[Section][Name].ToString();
+                }
+                catch { return null; }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static void Write(string Section, string Name, string Text)
+        {
+            if (System.IO.File.Exists(a))
+            {
+                string b = System.IO.File.ReadAllText(a);
+                try
+                {
+                    JObject jObject = JObject.Parse(b);
+                    jObject[Section][Name] = Text;
+                    string convertString = Convert.ToString(jObject);
+                    System.IO.File.WriteAllText(a, convertString);
+                }
+                catch
+                {
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("");
+            }
+        }
+
+    }
     public class Value
     {
         public static void Set(string name, string memory, string gamepath, string javapath, string version, string morevalue, string uuid, string accesstoken, bool fullscreen, bool complementaryResources)

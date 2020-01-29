@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Windows;
 
 namespace XMCL.Core
@@ -27,13 +26,14 @@ namespace XMCL.Core
                 L2.Visibility = T2.Visibility = Visibility.Hidden;
             }
         }
-        static Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         private void B1_Click(object sender, RoutedEventArgs e)
         {
             if (C1.Text == "正版登录")
             {
                 if (Authenticate.Login(T1.Text, T2.Password))
                 {
+                    a = true;
+                    Tools.GetSkins(Json.Read("Login", "uuid"));
                     this.Owner.Activate();
                     this.Close();
                 }
@@ -48,6 +48,7 @@ namespace XMCL.Core
                 else
                 {
                     Authenticate.Offline(T1.Text);
+                    a = false;
                     this.Owner.Activate();
                     this.Close();
                 }

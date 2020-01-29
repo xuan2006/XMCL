@@ -66,13 +66,15 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PresentationFramework.Aero2">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="System.Configuration">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Data">
@@ -203,11 +205,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\XMCL.exe.config" />
-    <None Include="Resources\xmcl.exe1.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Resources\XMCL.json" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="source\steve.png" />
@@ -230,11 +228,9 @@
     <Resource Include="source\Table.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\XMCL.Core.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\Newtonsoft.Json.dll" />
     <Content Include="Resources\WpfAnimatedGif.dll" />
+    <Content Include="Resources\XMCL.Core.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

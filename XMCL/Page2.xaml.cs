@@ -1,5 +1,4 @@
 using System;
-using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,7 +12,6 @@ namespace XMCL
     /// </summary>
     public partial class Page2 : Page
     {
-        static Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         public Page2()
         {
             InitializeComponent();
@@ -22,23 +20,23 @@ namespace XMCL
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Background = System.Windows.SystemParameters.WindowGlassBrush;
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDirectory"]))
+            if (Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
             { C1.IsChecked = true; T1.IsEnabled = false; BO.IsEnabled = false; }
             else C2.IsChecked = true;
-            TW.Text = ConfigurationManager.AppSettings["Width"];
-            TH.Text = ConfigurationManager.AppSettings["Height"];
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["FullScreen"]))
+            TW.Text = Json.Read("Video", "Width");
+            TH.Text = Json.Read("Video", "Height");
+            if (Convert.ToBoolean(Json.Read("Video", "IsFullScreen")))
                 C3.IsChecked = true;
-            T1.Text = ConfigurationManager.AppSettings["Game"];
-            T2.Text = ConfigurationManager.AppSettings["JavaPath"];
-            T3.Text = ConfigurationManager.AppSettings["Memory"];
-            T4.Text = ConfigurationManager.AppSettings["JavaValue"];
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["MoreValue"]))
+            T1.Text = Json.Read("Files", "GamePath");
+            T2.Text = Json.Read("Files", "JavaPath");
+            T3.Text = Json.Read("JVM", "Memory");
+            T4.Text = Json.Read("JVM", "Value");
+            if (Convert.ToBoolean(Json.Read("JVM", "MoreValueEnabled")))
                 C6_2.IsChecked = true;
             else C6_1.IsChecked = true;
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["AutoMemory"]))
+            if (Convert.ToBoolean(Json.Read("JVM", "AutoMemory")))
                 C4.IsChecked = true;
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["assetIndex"]))
+            if (Convert.ToBoolean(Json.Read("Files", "CompleteResource")))
                 C5.IsChecked = true;
         }
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -62,70 +60,50 @@ namespace XMCL
         {
             if (C1.IsChecked == true)
             {
-                _config.AppSettings.Settings.Remove("DefaultDirectory");
-                _config.AppSettings.Settings.Add("DefaultDirectory", "true");
+                Json.Write("Files", "UseDefaultDirectory", "true");
             }
             else
             {
-                _config.AppSettings.Settings.Remove("Game");
-                _config.AppSettings.Settings.Add("Game", T1.Text);
-                _config.AppSettings.Settings.Remove("DefaultDirectory");
-                _config.AppSettings.Settings.Add("DefaultDirectory", "false");
+                Json.Write("Files", "UseDefaultDirectory", "false");
             }
-            _config.AppSettings.Settings.Remove("Width");
-            _config.AppSettings.Settings.Add("Width", TW.Text);
-            _config.AppSettings.Settings.Remove("Height");
-            _config.AppSettings.Settings.Add("Height", TH.Text);
+            Json.Write("Files", "GamePath", T1.Text);
+            Json.Write("Video", "Width", TW.Text);
+            Json.Write("Video", "Height", TH.Text);
             if (C3.IsChecked == true)
             {
-                _config.AppSettings.Settings.Remove("FullScreen");
-                _config.AppSettings.Settings.Add("FullScreen", "true");
+                Json.Write("Video", "IsFullScreen", "true");
             }
             else
             {
-                _config.AppSettings.Settings.Remove("FullScreen");
-                _config.AppSettings.Settings.Add("FullScreen", "false");
+                Json.Write("Video", "IsFullScreen", "false");
             }
-            _config.AppSettings.Settings.Remove("JavaPath");
-            _config.AppSettings.Settings.Add("JavaPath", T2.Text);
-            _config.AppSettings.Settings.Remove("Memory");
-            _config.AppSettings.Settings.Add("Memory", T3.Text);
+            Json.Write("Files", "JavaPath", T2.Text);
+            Json.Write("JVM", "Memory", T3.Text);
             if (C4.IsChecked == true)
             {
-                _config.AppSettings.Settings.Remove("AutoMemory");
-                _config.AppSettings.Settings.Add("AutoMemory", "true");
+                Json.Write("JVM", "AutoMemory", "true");
             }
             else
             {
-                _config.AppSettings.Settings.Remove("AutoMemory");
-                _config.AppSettings.Settings.Add("AutoMemory", "false");
+                Json.Write("JVM", "AutoMemory", "false");
             }
             if (C5.IsChecked == true)
             {
-                _config.AppSettings.Settings.Remove("assetIndex");
-                _config.AppSettings.Settings.Add("assetIndex", "true");
+                Json.Write("Files", "CompleteResource", "true");
             }
             else
             {
-                _config.AppSettings.Settings.Remove("assetIndex");
-                _config.AppSettings.Settings.Add("assetIndex", "false");
+                Json.Write("Files", "CompleteResource", "false");
             }
             if (C6_1.IsChecked == true)
             {
-                _config.AppSettings.Settings.Remove("MoreValue");
-                _config.AppSettings.Settings.Add("MoreValue", "false");
-                _config.AppSettings.Settings.Remove("JavaValue");
-                _config.AppSettings.Settings.Add("JavaValue", " ");
+                Json.Write("JVM", "MoreValueEnabled", "false");
             }
             else
             {
-                _config.AppSettings.Settings.Remove("MoreValue");
-                _config.AppSettings.Settings.Add("MoreValue", "true");
-                _config.AppSettings.Settings.Remove("JavaValue");
-                _config.AppSettings.Settings.Add("JavaValue", T4.Text);
+                Json.Write("JVM", "MoreValueEnabled", "true");
+                Json.Write("JVM", "Value", T4.Text);
             }
-            _config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
         }
         private void GameOpen(object sender, RoutedEventArgs e)
         {

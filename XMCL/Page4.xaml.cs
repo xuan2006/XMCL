@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -45,7 +44,7 @@ namespace XMCL
             int a = lv1.SelectedIndex;
             MessageBox.Show(T[a]);
             string c = System.IO.Path.GetFileName(T[a]);
-            string b = ConfigurationManager.AppSettings["Game"] + "\\versions\\" + c.Substring(0, c.Length - 5) + "\\";
+            string b = Json.Read("Files", "GamePath") + "\\versions\\" + c.Substring(0, c.Length - 5) + "\\";
             WebClient client = new WebClient();
             if (Directory.Exists(b))
             { }

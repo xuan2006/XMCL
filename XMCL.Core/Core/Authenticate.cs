@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -12,8 +11,7 @@ namespace XMCL.Core
         /// <summary>
         /// Minecraft Authenticate 登录方法
         /// </summary>
-        static Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
+        public static string[] GetLogin { get; set; }
         public static bool Refresh(string accessToken, string clientToken)
         {
             try
@@ -32,15 +30,10 @@ namespace XMCL.Core
                 string rtxt = sr.ReadToEnd();//读取返回数据部分
                 JObject jObject = JObject.Parse(rtxt);
                 JObject jObject1 = JObject.Parse(jObject["selectedProfile"].ToString());
-                _config.AppSettings.Settings.Remove("accessToken");
-                _config.AppSettings.Settings.Add("accessToken", jObject["accessToken"].ToString());
-                _config.AppSettings.Settings.Remove("clientToken");
-                _config.AppSettings.Settings.Add("clientToken", jObject["clientToken"].ToString());
-                _config.AppSettings.Settings.Remove("userName");
-                _config.AppSettings.Settings.Add("userName", jObject1["name"].ToString());
-                _config.AppSettings.Settings.Remove("uuid");
-                _config.AppSettings.Settings.Add("uuid", jObject1["id"].ToString());
-                _config.Save();
+                Json.Write("Login", "accessToken", jObject["accessToken"].ToString());
+                Json.Write("Login", "clientToken", jObject["clientToken"].ToString());
+                Json.Write("Login", "userName", jObject1["name"].ToString());
+                Json.Write("Login", "uuid", jObject1["id"].ToString());
                 return true;
             }
             catch
@@ -66,15 +59,10 @@ namespace XMCL.Core
                 string rtxt = sr.ReadToEnd();//读取返回数据部分
                 JObject jObject = JObject.Parse(rtxt);
                 JObject jObject1 = JObject.Parse(jObject["selectedProfile"].ToString());
-                _config.AppSettings.Settings.Remove("accessToken");
-                _config.AppSettings.Settings.Add("accessToken", jObject["accessToken"].ToString());
-                _config.AppSettings.Settings.Remove("clientToken");
-                _config.AppSettings.Settings.Add("clientToken", jObject["clientToken"].ToString());
-                _config.AppSettings.Settings.Remove("userName");
-                _config.AppSettings.Settings.Add("userName", jObject1["name"].ToString());
-                _config.AppSettings.Settings.Remove("uuid");
-                _config.AppSettings.Settings.Add("uuid", jObject1["id"].ToString());
-                _config.Save();
+                Json.Write("Login", "accessToken", jObject["accessToken"].ToString());
+                Json.Write("Login", "clientToken", jObject["clientToken"].ToString());
+                Json.Write("Login", "userName", jObject1["name"].ToString());
+                Json.Write("Login", "uuid", jObject1["id"].ToString());
                 return true;
             }
             catch (Exception ex)
@@ -85,15 +73,10 @@ namespace XMCL.Core
         }
         public static void Offline(string name)
         {
-            _config.AppSettings.Settings.Remove("accessToken");
-            _config.AppSettings.Settings.Add("accessToken", Guid.NewGuid().ToString("N"));
-            _config.AppSettings.Settings.Remove("clientToken");
-            _config.AppSettings.Settings.Add("clientToken", "");
-            _config.AppSettings.Settings.Remove("userName");
-            _config.AppSettings.Settings.Add("userName", name);
-            _config.AppSettings.Settings.Remove("uuid");
-            _config.AppSettings.Settings.Add("uuid", Guid.NewGuid().ToString("N"));
-            _config.Save();
+            Json.Write("Login", "accessToken", Guid.NewGuid().ToString("N"));
+            Json.Write("Login", "clientToken", "");
+            Json.Write("Login", "userName", name);
+            Json.Write("Login", "uuid", Guid.NewGuid().ToString("N"));
         }
     }
 }

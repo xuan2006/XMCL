@@ -63,9 +63,9 @@ namespace XMCL {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
-        public static byte[] XMCL_exe {
+        public static byte[] XMCL {
             get {
-                object obj = ResourceManager.GetObject("XMCL_exe", resourceCulture);
+                object obj = ResourceManager.GetObject("XMCL", resourceCulture);
                 return ((byte[])(obj));
             }
         }

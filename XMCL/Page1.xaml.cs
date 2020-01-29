@@ -1,5 +1,5 @@
-﻿using System;
-using System.Configuration;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,6 +8,46 @@ using XMCL.Core;
 
 namespace XMCL
 {
+    public class Json
+    {
+        static string a = System.IO.Directory.GetCurrentDirectory() + "\\XMCL.json";
+        public static string Read(string Section, string Name)
+        {
+            if (System.IO.File.Exists(a))
+            {
+                string b = System.IO.File.ReadAllText(a);
+                try
+                {
+                    return JObject.Parse(b)[Section][Name].ToString();
+                }
+                catch { return null; }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static void Write(string Section, string Name, string Text)
+        {
+            if (System.IO.File.Exists(a))
+            {
+                string b = System.IO.File.ReadAllText(a);
+                try
+                {
+                    JObject jObject = JObject.Parse(b);
+                    jObject[Section][Name] = Text;
+                    string convertString = Convert.ToString(jObject);
+                    System.IO.File.WriteAllText(a, convertString);
+                }
+                catch { }
+            }
+            else
+            {
+
+            }
+        }
+
+    }
     /// <summary>
     /// Page1.xaml 的交互逻辑
     /// </summary>
@@ -17,28 +57,27 @@ namespace XMCL
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            ConfigurationManager.RefreshSection("appSettings");
             button1.IsEnabled = false;
             BL.IsEnabled = false;
             c1.IsEnabled = false;
-            bool full = Convert.ToBoolean(ConfigurationManager.AppSettings["FullScreen"]);
+            bool full = Convert.ToBoolean(Json.Read("Video", "IsFullScreen"));
             string value = " ";
-            bool assetIndex = Convert.ToBoolean(ConfigurationManager.AppSettings["assetIndex"]);
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["MoreValue"])) { }
-            else value = ConfigurationManager.AppSettings["JavaValue"];
+            bool assetIndex = Convert.ToBoolean(Json.Read("Files", "CompleteResource"));
+            if (Convert.ToBoolean(Json.Read("JVM", "MoreValueEnabled")))
+            { }
+            else value = Json.Read("JVM", "Value");
             Value.Set
                 (
-                    ConfigurationManager.AppSettings["userName"],
-                    ConfigurationManager.AppSettings["Memory"],
-                    ConfigurationManager.AppSettings["Game"],
-                    ConfigurationManager.AppSettings["JavaPath"],
+                    Json.Read("Login", "userName"),
+                    Json.Read("JVM", "Memory"),
+                    Json.Read("Files", "GamePath"),
+                    Json.Read("Files", "JavaPath"),
                     c1.Text,
                     value,
-                    ConfigurationManager.AppSettings["uuid"],
-                    ConfigurationManager.AppSettings["accessToken"],
+                    Json.Read("Login", "uuid"),
+                    Json.Read("Login", "accessToken"),
                     full,
                     assetIndex
                 );
@@ -51,7 +90,7 @@ namespace XMCL
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             BL.IsEnabled = false;
-            BL.Content = ConfigurationManager.AppSettings["userName"];
+            BL.Content = Json.Read("Login", "userName");
             Task task = new Task(() =>
             {
                 if (App.ISLogin)
@@ -60,7 +99,7 @@ namespace XMCL
                     {
                         if (App.ISOnline)
                         {
-                            head.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + ConfigurationManager.AppSettings["userName"] + "\\head.png"));
+                            head.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + Json.Read("Login", "userName") + "\\head.png"));
                             TL.Content = "已登录";
                         }
                         else TL.Content = "离线";
@@ -69,22 +108,22 @@ namespace XMCL
                 }
                 else
                 {
-                    if (XMCL.Core.Authenticate.Refresh(ConfigurationManager.AppSettings["accessToken"], ConfigurationManager.AppSettings["clientToken"]))
+                    if (XMCL.Core.Authenticate.Refresh(Json.Read("Login", "accessToken"), Json.Read("Login", "clientToken")))
                     {
                         App.ISLogin = true; App.ISOnline = true;
-                        XMCL.Core.Tools.GetSkins(ConfigurationManager.AppSettings["uuid"]);
+                        XMCL.Core.Tools.GetSkins(Json.Read("Login", "uuid"));
                         this.Dispatcher.BeginInvoke(new Action(() =>
                         {
                             BL.IsEnabled = true;
                             TL.Content = "已登录";
-                            head.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + ConfigurationManager.AppSettings["userName"] + "\\head.png"));
+                            head.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + Json.Read("Login", "userName") + "\\head.png"));
                         }));
                     }
                     else
                     {
                         bool a = false;
-                        if (ConfigurationManager.AppSettings["uuid"].Length > 0)
-                            if (ConfigurationManager.AppSettings["userName"].Length > 0)
+                        if (Json.Read("Login", "uuid").Length > 0)
+                            if (Json.Read("Login", "userName").Length > 0)
                                 a = true;
                         if (a)
                         {
@@ -98,9 +137,13 @@ namespace XMCL
                         {
                             this.Dispatcher.BeginInvoke(new Action(() =>
                             {
-                                WindowLogin.WindowLoginShow(false);
-                                ConfigurationManager.RefreshSection("appSettings");
-                                BL.Content = ConfigurationManager.AppSettings["userName"];
+                                if (WindowLogin.WindowLoginShow(false))
+                                {
+                                    App.ISOnline = true;
+                                    TL.Content = "已登录";
+                                    head.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + Json.Read("Login", "userName") + "\\head.png"));
+                                }
+                                BL.Content = Json.Read("Login", "userName");
                                 BL.IsEnabled = true;
                             }));
                         }
@@ -115,13 +158,12 @@ namespace XMCL
                 }));
             });
             task.Start();
-
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            comboBox.ItemsSource = Tools.GetVersions(ConfigurationManager.AppSettings["Game"]);
+            comboBox.ItemsSource = Tools.GetVersions(Json.Read("Files", "GamePath"));
         }
 
         private void ComboBox_DropDownClosed(object sender, EventArgs e)
