@@ -6,11 +6,30 @@
         xmlns:local="clr-namespace:XMCL"
         mc:Ignorable="d"
         ResizeMode="CanResize"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Loaded="Window_Loaded"
-        Title="XMCL" Height="450" Width="800" Closing="Window_Closing">
+        Title="XMCL" Height="450" Width="800" Closing="Window_Closing" Background="Transparent">
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Border Padding="0 30 0 0">
+                <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                    <Border Background="{TemplateBinding Background}"
+                        VerticalAlignment="Top" Height="30" Margin="0 -29 140 0">
+                        <TextBlock Foreground="White" Margin="16 0" VerticalAlignment="Center"
+                               FontSize="12" Text="{TemplateBinding Title}" />
+                    </Border>
+                    <ContentPresenter />
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="WindowState" Value="Maximized">
+                    <Setter TargetName="RootGrid" Property="Margin" Value="6" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Template>
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0 32 0 0" NonClientFrameEdges="Left,Bottom,Right"/>
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <Style x:Key="TabItemStyle2" TargetType="TabItem">
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -427,10 +446,12 @@
         </ControlTemplate>
         <SolidColorBrush x:Key="Menu.Static.Background" Color="#FFF0F0F0"/>
     </Window.Resources>
-    <Grid Background="#FF2D2D30" Margin="1,1,1,1">
-        <Button x:Name="button1" Style="{StaticResource BtnInfoStyle}" Content="╳" HorizontalAlignment="Right" Height="28" VerticalAlignment="Top" Width="46" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" FontFamily="Calibri Light" FontSize="10" Click="button1_Click"/>
-        <Button x:Name="button2" Style="{StaticResource BtnInfoStyle}" Content="➖" HorizontalAlignment="Right" Height="28" VerticalAlignment="Top" Width="46" Margin="0,0,46,0" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" FontFamily="Calibri Light" FontSize="10" Click="button2_Click"/>
-        <Menu x:Name="Menu" Background="{x:Null}" Margin="0,0,92,419">
+    <Grid x:Name="grid" Background="#FF2D2D30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="751*"/>
+        </Grid.ColumnDefinitions>
+        <Menu x:Name="Menu" Background="{x:Null}" Margin="-1022,-148,365,512" HorizontalAlignment="Right" Width="698">
             <MenuItem Header="  游戏  " Foreground="White" Margin="7,5,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei Light" Template="{DynamicResource MenuItemControlTemplate1}" Background="{x:Null}" BorderBrush="{x:Null}">
                 <MenuItem Header="强制终止游戏进程" Click="MenuItem_Click_1"/>
                 <MenuItem Header="下载游戏" Click="MenuItem_Click_2"/>
@@ -442,17 +463,7 @@
                 <MenuItem Header="启动器选项"/>
             </MenuItem>
         </Menu>
-        <Label x:Name="lable1" Content="XMCL 2.1" HorizontalAlignment="Left" Margin="185,1,0,0" VerticalAlignment="Top" Background="#FF2D2D30" FontFamily="Microsoft YaHei UI Light" FontSize="14">
-            <Label.Foreground>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
-            </Label.Foreground>
-        </Label>
-        <StatusBar x:Name="statusStrip1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="#FFD85700" FontFamily="Microsoft YaHei UI Light" Height="20" >
-            <StatusBar.Foreground>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
-            </StatusBar.Foreground>
-            <TextBlock x:Name="text1" TextWrapping="Wrap" Text="主页" FontSize="11"/>
-        </StatusBar>
-        <Frame x:Name="frame" Content="" HorizontalAlignment="Center" Height="385" Margin="10,34,10,29" VerticalAlignment="Center" Width="778" Background="#FF1E1E1E" NavigationUIVisibility="Hidden" Source="/XMCL;component/Page1.xaml" Navigated="frame_Navigated"/>
+        <Frame x:Name="frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF1E1E1E" NavigationUIVisibility="Hidden" Source="/XMCL;component/Page1.xaml" Grid.Column="1"/>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>

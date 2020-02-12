@@ -1,0 +1,15 @@
+﻿<Window x:Class="XMCL.Core.Java"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XMCL.Core"
+        mc:Ignorable="d"
+        Title="Java" Height="230" Width="400" Loaded="Window_Loaded">
+    <Grid>
+        <Label Content="从下面列表中选择一个Java" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button Content="确定" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="87" Height="26" Click="Button_Click"/>
+        <ListBox x:Name="ListBox1" HorizontalAlignment="Stretch" Height="117" Margin="10,0,10,44" VerticalAlignment="Bottom"/>
+
+    </Grid>
+</Window>

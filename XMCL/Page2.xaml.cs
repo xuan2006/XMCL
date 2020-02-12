@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Form = System.Windows.Forms;
+using XMCL.Core;
 
 namespace XMCL
 {
@@ -163,6 +164,11 @@ namespace XMCL
         private void JVMGuide_Click(object sender, RoutedEventArgs e)
         {
             T4.Text = XMCL.Core.GuideJVM.GuideJVMShow();
+        }
+
+        private void FindJava(object sender, RoutedEventArgs e)
+        {
+            T2.Text = Java.ChooseJava();
         }
     }
 }

@@ -76,7 +76,7 @@ namespace XMCL.Core
             {
                 for (int i = 0; i < JarsList.Count; i++)
                 {
-                    DownloadFile(JarURLsList[i], JarsList[i], PB1, Label1);
+                    try { DownloadFile(JarURLsList[i], JarsList[i], PB1, Label1); } catch { }
                 }
                 a += 1;
                 this.Dispatcher.BeginInvoke(new Action(() =>

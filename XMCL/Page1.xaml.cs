@@ -62,23 +62,38 @@ namespace XMCL
             button1.IsEnabled = false;
             BL.IsEnabled = false;
             c1.IsEnabled = false;
-            bool full = Convert.ToBoolean(Json.Read("Video", "IsFullScreen"));
             string value = " ";
+            string GamePath;
             bool assetIndex = Convert.ToBoolean(Json.Read("Files", "CompleteResource"));
             if (Convert.ToBoolean(Json.Read("JVM", "MoreValueEnabled")))
             { }
             else value = Json.Read("JVM", "Value");
+            if (Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
+            {
+                string c = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\.minecraft";
+                if (System.IO.Directory.Exists(c))
+                { }
+                else
+                {
+                    System.IO.Directory.CreateDirectory(c);
+                }
+                GamePath = c;
+            }
+            else
+            {
+                GamePath = Json.Read("Files", "GamePath");
+            }
             Value.Set
                 (
                     Json.Read("Login", "userName"),
                     Json.Read("JVM", "Memory"),
-                    Json.Read("Files", "GamePath"),
+                    GamePath,
                     Json.Read("Files", "JavaPath"),
                     c1.Text,
                     value,
                     Json.Read("Login", "uuid"),
                     Json.Read("Login", "accessToken"),
-                    full,
+                    Convert.ToBoolean(Json.Read("Video", "IsFullScreen")),
                     assetIndex
                 );
             Game.Run();
@@ -86,7 +101,6 @@ namespace XMCL
             BL.IsEnabled = true;
             c1.IsEnabled = true;
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             BL.IsEnabled = false;
@@ -159,13 +173,27 @@ namespace XMCL
             });
             task.Start();
         }
-
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            comboBox.ItemsSource = Tools.GetVersions(Json.Read("Files", "GamePath"));
+            string GamePath;
+            if (Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
+            {
+                string c = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\.minecraft";
+                if (System.IO.Directory.Exists(c))
+                { }
+                else
+                {
+                    System.IO.Directory.CreateDirectory(c);
+                }
+                GamePath = c;
+            }
+            else
+            {
+                GamePath = Json.Read("Files", "GamePath");
+            }
+            comboBox.ItemsSource = Tools.GetVersions(GamePath);
         }
-
         private void ComboBox_DropDownClosed(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -185,7 +213,6 @@ namespace XMCL
 
             }
         }
-
         private void BL_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Page3.xaml", UriKind.Relative));

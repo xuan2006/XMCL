@@ -6,12 +6,12 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:XMCL"
       mc:Ignorable="d" 
-      d:DesignHeight="385" d:DesignWidth="778"
+      d:DesignHeight="389" d:DesignWidth="743"
       Title="Page1" Loaded="Page_Loaded">
 
-    <Grid Background="#FF1E1E1E">
-        <ComboBox x:Name="c1" HorizontalAlignment="Left" Margin="554,318,0,0" VerticalAlignment="Top" Width="214" Height="57" DropDownOpened="ComboBox_DropDownOpened" DropDownClosed="ComboBox_DropDownClosed"/>
-        <Button x:Name="button1" Content="开始游戏&#xA;未选择版本" Style="{StaticResource BtnInfoStyle}" HorizontalAlignment="Right" Height="57" VerticalAlignment="Top" Width="196.125" Background="#FF404040" BorderBrush="#FF404040" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="button1_Click" Margin="0,318,27.875,0">
+    <Grid>
+        <ComboBox x:Name="c1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="214" Height="57" DropDownOpened="ComboBox_DropDownOpened" DropDownClosed="ComboBox_DropDownClosed" Margin="0,0,25,27"/>
+        <Button x:Name="button1" Content="开始游戏&#xA;未选择版本" Style="{StaticResource BtnInfoStyle}" HorizontalAlignment="Right" Height="57" VerticalAlignment="Bottom" Background="#FF404040" BorderBrush="#FF404040" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="button1_Click" Margin="0,0,44,27" Width="195">
         </Button>
         <Grid  HorizontalAlignment="Right" Height="60" VerticalAlignment="Top" Width="188" Margin="0,10,10,0" >
             <Button x:Name="BL" Style="{StaticResource BtnInfoStyle}" Background="#FF1E1E1E" BorderBrush="#FF1E1E1E" Foreground="White" FontFamily="Microsoft YaHei Light" Margin="64,10,10,31" Width="Auto" Height="Auto" Content="steve" HorizontalAlignment="Left" FontSize="13" Click="BL_Click"/>
@@ -20,6 +20,5 @@
             <Image x:Name="LL1"  RenderOptions.BitmapScalingMode="NearestNeighbor" RenderOptions.ClearTypeHint="Enabled" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="46" Margin="59,27,0,0" gif:ImageBehavior.AnimatedSource="source/load.gif" />
             <Label x:Name="TL" HorizontalAlignment="Left" Margin="62,25,0,0" Content="离线" VerticalAlignment="Top" Foreground="White" Height="22" Width="46" FontSize="10" FontFamily="Microsoft YaHei Light" Visibility="Collapsed"/>
         </Grid>
-        <Label Content="xuan2006's Minecraft Laucher&#xA;XMCL启动器" HorizontalAlignment="Left" Height="89" Margin="10,10,0,0" VerticalAlignment="Top" Width="565" Foreground="White" FontFamily="Microsoft YaHei Light" FontSize="30"/>
     </Grid>
 </Page>

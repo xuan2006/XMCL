@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:XMCL"
       mc:Ignorable="d" 
-      d:DesignHeight="385" d:DesignWidth="778"
+      d:DesignHeight="389" d:DesignWidth="743"
       Unloaded="Page_Unloaded"
       Title="Page2" Loaded="Page_Loaded">
 
@@ -13,54 +13,56 @@
         <Label Content="启动设置" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontSize="18" FontFamily="Microsoft YaHei Light"/>
         <Button x:Name="Back" Style="{StaticResource BtnInfoStyle}" Background="#FF1E1E1E" BorderBrush="#FF1E1E1E" Foreground="White" FontFamily="Microsoft YaHei Light" Margin="716,10,0,356" Width="Auto" Height="Auto" Content="回到主页" HorizontalAlignment="Left" FontSize="13" Click="Back_Click"/>
         <ScrollViewer Margin="0,49,0,0">
-            <Grid Height="680">
-                <Grid HorizontalAlignment="Left" Height="116" VerticalAlignment="Top" Width="760" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
-                    <RadioButton x:Name="C1" Content="使用默认游戏路径 即 %AppDate%\Roaming\.minecraft  [如果.minecraft文件夹不存在将被创建]" HorizontalAlignment="Left" Height="16" Margin="10,39,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C1_Checked"/>
-                    <Label Content="游戏目录:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="135" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
-                    <RadioButton x:Name="C2" Content="自定义      打开.minecraft目录" HorizontalAlignment="Left" Height="16" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C2_Checked"/>
-                    <TextBox x:Name="T1" HorizontalAlignment="Left" Height="22" Margin="10,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="660" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
-                    <Button x:Name="BO" Style="{StaticResource ButtonStyle1}" Content="打开" HorizontalAlignment="Left" Margin="675,81,0,0" VerticalAlignment="Top" Width="75" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Click="GameOpen"/>
-                </Grid>
-                <Grid HorizontalAlignment="Left" Height="74" VerticalAlignment="Top" Width="760" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,487,0,0">
-                    <Label Content="游戏窗口:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
-                    <Label Content="分辨率:" HorizontalAlignment="Left" Height="24" Margin="10,34,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
-                    <TextBox x:Name="TW" HorizontalAlignment="Left" Height="20" Margin="64.153,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Text="854" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
-                    <TextBox x:Name="TH" HorizontalAlignment="Left" Height="20" Margin="159.153,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Text="480" FontFamily="Microsoft YaHei UI Light"/>
-                    <Label Content="╳" HorizontalAlignment="Left" Height="21" Margin="136.153,35,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="8"/>
-                    <CheckBox x:Name="C3" Content="全屏模式" HorizontalAlignment="Left" Height="22" Margin="267,34,0,0" VerticalAlignment="Top" Width="166" VerticalContentAlignment="Center" Foreground="White" Background="White" FontFamily="Calibri Light"/>
-                </Grid>
-                <Grid HorizontalAlignment="Left" Width="760" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,562,0,0" VerticalAlignment="Top" Height="123">
-                    <Label Content="其他:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="43" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
-                    <Label Content="本启动器所有的资源来自于Minecraft官方网站&#xA;因此下载速度会比较慢&#xA;暂且不支持1.6以下的版本" HorizontalAlignment="Left" Height="54" Margin="10,59,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" Width="620"/>
-                    <CheckBox x:Name="C5" Content="补全资源文件" HorizontalAlignment="Left" Height="15" Margin="10,39,0,0" VerticalAlignment="Top" Width="166" VerticalContentAlignment="Center" Foreground="White" Background="White" FontFamily="Calibri Light"/>
-                </Grid>
-                <Grid HorizontalAlignment="Left" Height="94" VerticalAlignment="Top" Width="760" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,117,0,0">
-                    <Label Content="Java目录:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="135" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
-                    <TextBox x:Name="T2" HorizontalAlignment="Left" Height="22" Margin="13,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="657" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
-                    <Button Style="{StaticResource ButtonStyle1}" Content="打开" HorizontalAlignment="Left" Margin="675,39,0,0" VerticalAlignment="Top" Width="74" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Click="JavaOpen"/>
-                    <Button Style="{StaticResource ButtonStyle1}" Content="下载Java环境" HorizontalAlignment="Left" Margin="662,66,0,0" VerticalAlignment="Top" Width="87" Height="22" Background="#FF1E1E1E" BorderBrush="#FF1E1E1E" Click="JavaDownload" FontFamily="Calibri" Foreground="#FF0066CC"/>
-                </Grid>
-                <Grid HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="760" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,212,0,0">
-                    <Label Content="内存设置:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
-                    <Label Content="内存大小:" HorizontalAlignment="Left" Height="24" Margin="10,34,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
-                    <TextBox x:Name="T3" HorizontalAlignment="Left" Height="20" Margin="71.153,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Text="1024" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
-                    <Label Content="MB" HorizontalAlignment="Left" Height="22" Margin="112,34,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" Width="26"/>
-                    <CheckBox x:Name="C4" Content="自动分配（未完成）" HorizontalAlignment="Left" Height="22" Margin="267,34,0,0" VerticalAlignment="Top" Width="166" VerticalContentAlignment="Center" Foreground="White" Background="White" FontFamily="Calibri Light"/>
-                </Grid>
-                <Grid HorizontalAlignment="Left" Height="206" VerticalAlignment="Top" Width="758" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,280,0,0">
-                    <Label Content="Java参数:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
-                    <TextBox x:Name="T4" HorizontalAlignment="Left" Height="115" Margin="10,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="659" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Text="" FontFamily="Microsoft YaHei Light"/>
-                    <RadioButton x:Name="C6_1" Content="不添加JVM虚拟机参数" HorizontalAlignment="Left" Height="16" Margin="10,39,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C6_1_Checked"/>
-                    <RadioButton x:Name="C6_2" Content="添加JVM虚拟机参数" HorizontalAlignment="Left" Height="16" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C6_2_Checked"/>
-                    <Button x:Name="JVMGuide" Style="{StaticResource ButtonStyle1}" Content="参数向导" HorizontalAlignment="Left" Margin="674,81,0,0" VerticalAlignment="Top" Width="74" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei Light" Click="JVMGuide_Click" />
-                    <Button x:Name="JVMVaule" Style="{StaticResource ButtonStyle1}" Content="默认参数" HorizontalAlignment="Left" Margin="674,108,0,0" VerticalAlignment="Top" Width="74" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei Light" Click="JVMVaule_Click"/>
-                </Grid>
-                <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,279,10,0" VerticalAlignment="Top" Height="1"/>
-                <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,561,10,0" Width="758" VerticalAlignment="Top" Height="1"/>
-                <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,211,10,0" VerticalAlignment="Top" Height="1"/>
-                <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="0,486,20,0" Width="758" VerticalAlignment="Top" Height="1"/>
-                <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,116,10,0" VerticalAlignment="Top" Height="1"/>
-            </Grid>
         </ScrollViewer>
+        <Grid Margin="-932,16,932,-312">
+            <Grid HorizontalAlignment="Left" Height="116" VerticalAlignment="Top" Width="743" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
+                <RadioButton x:Name="C1" Content="使用默认游戏路径 即 %AppDate%\Roaming\.minecraft  [如果.minecraft文件夹不存在将被创建]" HorizontalAlignment="Left" Height="16" Margin="10,39,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C1_Checked"/>
+                <Label Content="游戏目录:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="135" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
+                <RadioButton x:Name="C2" Content="自定义      打开.minecraft目录" HorizontalAlignment="Left" Height="16" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C2_Checked"/>
+                <TextBox x:Name="T1" HorizontalAlignment="Left" Height="22" Margin="10,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="643" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
+                <Button x:Name="BO" Style="{StaticResource ButtonStyle1}" Content="打开" HorizontalAlignment="Left" Margin="658,81,0,0" VerticalAlignment="Top" Width="75" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Click="GameOpen"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="74" VerticalAlignment="Top" Width="743" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,487,0,0">
+                <Label Content="游戏窗口:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
+                <Label Content="分辨率:" HorizontalAlignment="Left" Height="24" Margin="10,34,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
+                <TextBox x:Name="TW" HorizontalAlignment="Left" Height="20" Margin="64.153,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Text="854" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
+                <TextBox x:Name="TH" HorizontalAlignment="Left" Height="20" Margin="159.153,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Text="480" FontFamily="Microsoft YaHei UI Light"/>
+                <Label Content="╳" HorizontalAlignment="Left" Height="21" Margin="136.153,35,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="8"/>
+                <CheckBox x:Name="C3" Content="全屏模式" HorizontalAlignment="Left" Height="22" Margin="267,34,0,0" VerticalAlignment="Top" Width="166" VerticalContentAlignment="Center" Foreground="White" Background="White" FontFamily="Calibri Light"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Width="743" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,562,0,-5" VerticalAlignment="Top" Height="123">
+                <Label Content="其他:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="43" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
+                <Label Content="本启动器所有的资源来自于Minecraft官方网站&#xA;因此下载速度会比较慢&#xA;暂且不支持1.6以下的版本" HorizontalAlignment="Left" Height="54" Margin="10,59,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" Width="620"/>
+                <CheckBox x:Name="C5" Content="补全资源文件" HorizontalAlignment="Left" Height="15" Margin="10,39,0,0" VerticalAlignment="Top" Width="166" VerticalContentAlignment="Center" Foreground="White" Background="White" FontFamily="Calibri Light"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="94" VerticalAlignment="Top" Width="743" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,117,0,0">
+                <Label Content="Java目录:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="135" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
+                <TextBox x:Name="T2" HorizontalAlignment="Left" Height="22" Margin="13,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="641" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
+                <Button Style="{StaticResource ButtonStyle1}" Content="打开" HorizontalAlignment="Left" Margin="659,39,0,0" VerticalAlignment="Top" Width="74" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Click="JavaOpen"/>
+                <Button Style="{StaticResource ButtonStyle1}" Content="下载Java环境" HorizontalAlignment="Left" Margin="646,66,0,0" VerticalAlignment="Top" Width="87" Height="22" Background="#FF1E1E1E" BorderBrush="#FF1E1E1E" Click="JavaDownload" FontFamily="Calibri" Foreground="#FF0066CC"/>
+                <Button Style="{StaticResource ButtonStyle1}" Content="自动查找Java" HorizontalAlignment="Left" Margin="553,66,0,0" VerticalAlignment="Top" Width="88" Height="22" Background="#FF1E1E1E" BorderBrush="#FF1E1E1E" Click="FindJava" FontFamily="Calibri" Foreground="#FF0066CC"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="743" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,212,0,0">
+                <Label Content="内存设置:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
+                <Label Content="内存大小:" HorizontalAlignment="Left" Height="24" Margin="10,34,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light"/>
+                <TextBox x:Name="T3" HorizontalAlignment="Left" Height="20" Margin="71.153,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" VerticalContentAlignment="Center" Background="#FF1E1E1E" BorderBrush="#FF707070" Text="1024" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
+                <Label Content="MB" HorizontalAlignment="Left" Height="22" Margin="112,34,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" Width="26"/>
+                <CheckBox x:Name="C4" Content="自动分配（未完成）" HorizontalAlignment="Left" Height="22" Margin="267,34,0,0" VerticalAlignment="Top" Width="166" VerticalContentAlignment="Center" Foreground="White" Background="White" FontFamily="Calibri Light"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="206" VerticalAlignment="Top" Width="743" Background="#FF1E1E1E" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave" Margin="0,280,0,0">
+                <Label Content="Java参数:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" FontSize="14"/>
+                <TextBox x:Name="T4" HorizontalAlignment="Left" Height="115" Margin="10,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="644" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" Text="" FontFamily="Microsoft YaHei Light"/>
+                <RadioButton x:Name="C6_1" Content="不添加JVM虚拟机参数" HorizontalAlignment="Left" Height="16" Margin="10,39,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C6_1_Checked"/>
+                <RadioButton x:Name="C6_2" Content="添加JVM虚拟机参数" HorizontalAlignment="Left" Height="16" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Width="620" FontFamily="Calibri Light" Background="White" Checked="C6_2_Checked"/>
+                <Button x:Name="JVMGuide" Style="{StaticResource ButtonStyle1}" Content="参数向导" HorizontalAlignment="Left" Margin="659,81,0,0" VerticalAlignment="Top" Width="74" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei Light" Click="JVMGuide_Click" />
+                <Button x:Name="JVMVaule" Style="{StaticResource ButtonStyle1}" Content="默认参数" HorizontalAlignment="Left" Margin="659,108,0,0" VerticalAlignment="Top" Width="74" Height="22" Background="#FF1E1E1E" BorderBrush="#FF707070" Foreground="White" FontFamily="Microsoft YaHei Light" Click="JVMVaule_Click"/>
+            </Grid>
+            <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,279,10,0" VerticalAlignment="Top" Height="1"/>
+            <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,561,10,0" VerticalAlignment="Top" Height="1"/>
+            <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,211,10,0" VerticalAlignment="Top" Height="1"/>
+            <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="0,486,10,0" VerticalAlignment="Top" Height="1"/>
+            <Rectangle RenderTransformOrigin="6.6,-1.05" Fill="#FF404040" Margin="10,116,10,0" VerticalAlignment="Top" Height="1"/>
+        </Grid>
+
     </Grid>
 </Page>

@@ -78,7 +78,7 @@ namespace XMCL.Core
             }
             catch
             {
-                throw;
+
             }
         }
     }
