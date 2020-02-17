@@ -17,10 +17,8 @@ namespace XMCL
         {
             InitializeComponent();
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Background = System.Windows.SystemParameters.WindowGlassBrush;
             if (Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
             { C1.IsChecked = true; T1.IsEnabled = false; BO.IsEnabled = false; }
             else C2.IsChecked = true;
@@ -39,6 +37,7 @@ namespace XMCL
                 C4.IsChecked = true;
             if (Convert.ToBoolean(Json.Read("Files", "CompleteResource")))
                 C5.IsChecked = true;
+            CD.SelectedItem = Json.Read("Files", "DownloadSource");
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -46,17 +45,16 @@ namespace XMCL
         }
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {
-            SolidColorBrush solidColorBrush = new SolidColorBrush(Color.FromArgb(100, 64, 64, 64));
+            SolidColorBrush solidColorBrush = new SolidColorBrush(Color.FromArgb(100, 30, 30, 30));
             Grid Grid = (Grid)sender;
             Grid.Background = solidColorBrush;
         }
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
-            SolidColorBrush solidColorBrush = new SolidColorBrush(Color.FromArgb(100, 30, 30, 30));
+            SolidColorBrush solidColorBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             Grid Grid = (Grid)sender;
             Grid.Background = solidColorBrush;
         }
-
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             if (C1.IsChecked == true)
@@ -105,6 +103,7 @@ namespace XMCL
                 Json.Write("JVM", "MoreValueEnabled", "true");
                 Json.Write("JVM", "Value", T4.Text);
             }
+            Json.Write("Files", "DownloadSource", CD.SelectedItem.ToString());
         }
         private void GameOpen(object sender, RoutedEventArgs e)
         {
@@ -114,7 +113,6 @@ namespace XMCL
                 MessageBox.Show("目录中不能包含有空格!");
             else T1.Text = a.SelectedPath;
         }
-
         private void JavaOpen(object sender, RoutedEventArgs e)
         {
             Form.OpenFileDialog a = new Form.OpenFileDialog();
@@ -123,49 +121,40 @@ namespace XMCL
             a.ShowDialog();
             T2.Text = a.FileName;
         }
-
         private void OpenVersion(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Page4.xaml", UriKind.Relative));
         }
-
         private void JavaDownload(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.java.com/zh_CN/");
         }
-
         private void C1_Checked(object sender, RoutedEventArgs e)
         {
             T1.IsEnabled = false;
             BO.IsEnabled = false;
         }
-
         private void C2_Checked(object sender, RoutedEventArgs e)
         {
             T1.IsEnabled = true;
             BO.IsEnabled = true;
         }
-
         private void C6_1_Checked(object sender, RoutedEventArgs e)
         {
             T4.IsEnabled = JVMGuide.IsEnabled = JVMVaule.IsEnabled = false;
         }
-
         private void C6_2_Checked(object sender, RoutedEventArgs e)
         {
             T4.IsEnabled = JVMGuide.IsEnabled = JVMVaule.IsEnabled = true;
         }
-
         private void JVMVaule_Click(object sender, RoutedEventArgs e)
         {
             T4.Text = " -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=16M -XX:-UseAdaptiveSizePolicy -XX:-OmitStackTraceInFastThrow  -Dfml.ignoreInvalidMinecraftCertificates=true -Dfml.ignorePatchDiscrepancies=true -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump";
         }
-
         private void JVMGuide_Click(object sender, RoutedEventArgs e)
         {
             T4.Text = XMCL.Core.GuideJVM.GuideJVMShow();
         }
-
         private void FindJava(object sender, RoutedEventArgs e)
         {
             T2.Text = Java.ChooseJava();

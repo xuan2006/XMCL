@@ -43,7 +43,6 @@ namespace XMCL
         {
             int a = lv1.SelectedIndex;
             string c = System.IO.Path.GetFileName(T[a]);
-            MessageBox.Show(c);
             string b;
             if (Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
                 b = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\.minecraft\\versions\\" + c.Substring(0, c.Length - 5) + "\\";

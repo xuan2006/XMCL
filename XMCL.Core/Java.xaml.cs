@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
+﻿using System.Windows;
 namespace XMCL.Core
 {
     /// <summary>
@@ -19,6 +6,7 @@ namespace XMCL.Core
     /// </summary>
     public partial class Java : Window
     {
+        public static Window OwnerWindows { get; set; }
         public static string a { get; set; }
         public Java()
         {
@@ -34,6 +22,8 @@ namespace XMCL.Core
         public static string ChooseJava()
         {
             Java java = new Java();
+            try { java.Owner = OwnerWindows; } catch { }
+            java.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             java.ShowDialog();
             string b;
             if (a == null)
@@ -45,6 +35,12 @@ namespace XMCL.Core
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ListBox1.ItemsSource = Tools.GetJavaList();
+        }
+
+        private void JavaOpen(object sender, RoutedEventArgs e)
+        {
+            a = ListBox1.SelectedItem.ToString();
+            this.Close();
         }
     }
 }

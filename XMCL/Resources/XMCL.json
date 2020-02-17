@@ -3,7 +3,8 @@
     "GamePath": "",
     "JavaPath": "",
     "CompleteResource": "true",
-    "UseDefaultDirectory": "false"
+    "UseDefaultDirectory": "false",
+    "DownloadSource": "Mojang"
   },
   "JVM": {
     "MoreValueEnabled": "true",
@@ -22,4 +23,9 @@
     "Height": "480",
     "IsFullScreen": "false"
   },
+  "Individualization": {
+    "EnableImage": "false",
+    "ImageFile": "",
+    "BackgroundColor": "30,30,30,75"
+  }
 }

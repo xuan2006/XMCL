@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XMCL"
         mc:Ignorable="d"
-        ResizeMode="CanResize"
+        ResizeMode="CanMinimize"
         Loaded="Window_Loaded"
         Title="XMCL" Height="450" Width="800" Closing="Window_Closing" Background="Transparent">
     <Window.Template>
         <ControlTemplate TargetType="Window">
             <Border Padding="0 30 0 0">
                 <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Background="Transparent"
                         VerticalAlignment="Top" Height="30" Margin="0 -29 140 0">
                         <TextBlock Foreground="White" Margin="16 0" VerticalAlignment="Center"
                                FontSize="12" Text="{TemplateBinding Title}" />
@@ -446,24 +446,28 @@
         </ControlTemplate>
         <SolidColorBrush x:Key="Menu.Static.Background" Color="#FFF0F0F0"/>
     </Window.Resources>
-    <Grid x:Name="grid" Background="#FF2D2D30">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="751*"/>
-        </Grid.ColumnDefinitions>
-        <Menu x:Name="Menu" Background="{x:Null}" Margin="-1022,-148,365,512" HorizontalAlignment="Right" Width="698">
-            <MenuItem Header="  游戏  " Foreground="White" Margin="7,5,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei Light" Template="{DynamicResource MenuItemControlTemplate1}" Background="{x:Null}" BorderBrush="{x:Null}">
-                <MenuItem Header="强制终止游戏进程" Click="MenuItem_Click_1"/>
-                <MenuItem Header="下载游戏" Click="MenuItem_Click_2"/>
-                <MenuItem Header="管理Mod"/>
-                <MenuItem Header="材质包和光影"/>
-            </MenuItem>
-            <MenuItem Header="  设置  " Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei Light" Template="{DynamicResource MenuItemControlTemplate1}" Margin="5,5,0,0" Background="{x:Null}" BorderBrush="{x:Null}">
-                <MenuItem Header="启动设置" Click="MenuItem_Click"/>
-                <MenuItem Header="启动器选项"/>
-            </MenuItem>
-        </Menu>
-        <Frame x:Name="frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF1E1E1E" NavigationUIVisibility="Hidden" Source="/XMCL;component/Page1.xaml" Grid.Column="1"/>
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    <Grid x:Name="grid">
+        <Frame x:Name="frame" VerticalAlignment="Stretch" Background="#BF1E1E1E" NavigationUIVisibility="Hidden" Source="/XMCL;component/Page1.xaml" Margin="50,0,0,0" Foreground="{x:Null}"/>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="50" Background="#BF1E1E1E"/>
+        <Grid x:Name="Menu" Background="#991E1E1E" HorizontalAlignment="Left" Width="160">
+            <Button x:Name="MenuButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="30" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="MenuButton_Click"/>
+            <Label Content="XMCL" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Height="30" Width="110" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="White" FontFamily="Candara Light" FontSize="18"/>
+            <Rectangle Height="1" Fill="White" Margin="0,30,0,0" VerticalAlignment="Top" />
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="ToPage1" Margin="0,31,0,0"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="ToPage2" Margin="0,66,0,0"/>
+            <Button x:Name="ToPage5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="ToPage5_Click" Margin="0,101,0,0"/>
+            <Button x:Name="MenuButton_Copy3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="160" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="MenuButton_Click" Margin="0,356,0,0"/>
+            <Label Content="主页" HorizontalAlignment="Left" Margin="50,31,0,0" VerticalAlignment="Top" Height="35" Width="110" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="White" FontFamily="Candara Light" FontSize="14"/>
+            <Label Content="游戏设置" HorizontalAlignment="Left" Margin="50,66,0,0" VerticalAlignment="Top" Height="35" Width="110" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="White" FontFamily="Candara Light" FontSize="14"/>
+            <Label Content="版本管理" HorizontalAlignment="Left" Margin="50,101,0,0" VerticalAlignment="Top" Height="35" Width="110" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="White" FontFamily="Candara Light" FontSize="14"/>
+            <Label Content="关于" HorizontalAlignment="Left" Margin="50,356,0,0" VerticalAlignment="Bottom" Height="35" Width="110" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="White" FontFamily="Candara Light" FontSize="14"/>
+            <Grid HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.66,0.504">
+                <Rectangle Width="20" Height="2" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="17,19,13,0" />
+                <Rectangle Width="20" Height="2" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="17,14,13,0" />
+                <Rectangle Width="20" Height="2" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="17,9,13,0" />
+            </Grid>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="MenuButton_Click" Margin="0,136,0,0"/>
+            <Label Content="个性化" HorizontalAlignment="Left" Margin="50,136,0,0" VerticalAlignment="Top" Height="35" Width="110" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="White" FontFamily="Candara Light" FontSize="14"/>
+        </Grid>
     </Grid>
 </Window>

@@ -17,6 +17,7 @@ namespace XMCL
     
     public partial class MainWindow : Window
     {
+        #region 透明
         ///透明[
         internal enum AccentState
         {
@@ -71,7 +72,7 @@ namespace XMCL
             Marshal.FreeHGlobal(accentPtr);
         }
         /// ]
-
+        #endregion
         System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
             string dllName = args.Name.Contains(",") ? args.Name.Substring(0, args.Name.IndexOf(',')) : args.Name.Replace(".dll", "");
@@ -109,9 +110,11 @@ namespace XMCL
                 catch { }
             }
             EnableBlur();
+            System.GC.Collect();
             Game.downLoadHelper.Owner = this;
             Game.downLoadHelper.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             WindowLogin.WindowLoginOwner = this;
+            Java.OwnerWindows = this;
             if (System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\XMCL.json"))
             { }
             else
@@ -128,6 +131,8 @@ namespace XMCL
                     throw ex;
                 }
             }
+            System.GC.Collect();
+            Menu.Width = 50;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -144,30 +149,44 @@ namespace XMCL
                 this.UpdateLayout();
             }
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            frame.Navigate(new Uri("Page2.xaml", UriKind.Relative));
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            Game.Stop();
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            frame.Navigate(new Uri("Page4.xaml", UriKind.Relative));
-        }
-
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Process.GetCurrentProcess().Kill();
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Menu.Width == 160)
+                Menu.Width = 50;
+            else Menu.Width = 160;
+        }
+
+        private void ToPage1(object sender, RoutedEventArgs e)
+        {
+            if (frame.Content.ToString().Contains("Page1.xaml")) 
+            { }
+            else frame.Navigate(new Page1());
+            if (Menu.Width == 160)
+                Menu.Width = 50;
+            else Menu.Width = 160;
+        }
+
+        private void ToPage2(object sender, RoutedEventArgs e)
+        {
+            if (frame.Content.ToString().Contains("Page2.xaml"))
+            { }
+            else frame.Navigate(new Page2());
+            if (Menu.Width == 160)
+                Menu.Width = 50;
+        }
+
+        private void ToPage5_Click(object sender, RoutedEventArgs e)
+        {
+            if (frame.Content.ToString().Contains("Page5.xaml"))
+            { }
+            else frame.Navigate(new Page5());
+            if (Menu.Width == 160)
+                Menu.Width = 50;
         }
     }
 }

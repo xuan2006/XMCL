@@ -32,11 +32,11 @@ namespace XMCL
             if (App.ISOnline)
             {
                 head.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + Json.Read("Login", "userName") + "\\head.png"));
-                skin.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + Json.Read("Login", "userName") + "\\skin.png"));
+                //skin.Source = new BitmapImage(new Uri(System.IO.Directory.GetCurrentDirectory() + "\\user\\" + Json.Read("Login", "userName") + "\\skin.png"));
             }
             else
             {
-                BS.IsEnabled = false;
+                //BS.IsEnabled = false;
             }
         }
 

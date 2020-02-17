@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XMCL.Core"
         mc:Ignorable="d"
-        Title="Java" Height="230" Width="400" Loaded="Window_Loaded">
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="Java" Height="128" Width="501" Loaded="Window_Loaded" Background="#E51E1E1E">
     <Grid>
-        <Label Content="从下面列表中选择一个Java" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button Content="确定" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="87" Height="26" Click="Button_Click"/>
-        <ListBox x:Name="ListBox1" HorizontalAlignment="Stretch" Height="117" Margin="10,0,10,44" VerticalAlignment="Bottom"/>
-
+        <ListBox x:Name="ListBox1" HorizontalAlignment="Stretch" Height="55" Margin="10,0,10,41" VerticalAlignment="Bottom" Background="#00000000" BorderBrush="#FF404040" Foreground="White"/>
+        <TextBlock Text="从下面列表中选择一个Java" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Candara Light"/>
+        <Button Style="{StaticResource ButtonStyle1}" Content="确定" HorizontalAlignment="Left" Margin="406,95,0,0" VerticalAlignment="Top" Width="85" Height="23" Background="#BF1E1E1E" BorderBrush="#FF707070" Foreground="White" Click="JavaOpen"/>
     </Grid>
 </Window>

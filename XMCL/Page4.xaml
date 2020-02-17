@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:XMCL"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="XMCL.Page4"
       mc:Ignorable="d" 
-      d:DesignHeight="385" d:DesignWidth="778"
+      d:DesignHeight="389" d:DesignWidth="743"
       Title="Page4" Loaded="Page_Loaded">
     <Page.Resources>
         <Style x:Key="TabItemStyle2" TargetType="{x:Type TabItem}">
@@ -131,8 +131,8 @@
             </Setter>
         </Style>
         <Style TargetType="{x:Type GridViewColumnHeader}">
-            <Setter Property="Background" Value="#FF404040" />
-            <Setter Property="FontFamily" Value="Microsoft YaHei Light" />
+            <Setter Property="Background" Value="#BF1E1E1E" />
+            <Setter Property="FontFamily" Value="Calibri Light" />
             <Setter Property="Foreground" >
                 <Setter.Value>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
@@ -178,15 +178,15 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="HeaderBorder" Value="#FF707070"/>
+                                <Setter Property="Background" TargetName="HeaderBorder" Value="#BF707070"/>
                                 <Setter Property="Background" TargetName="PART_HeaderGripper" Value="Transparent"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="Background" TargetName="HeaderBorder" Value="#FF999999"/>
                                 <Setter Property="Visibility" TargetName="PART_HeaderGripper" Value="Hidden"/>
                             </Trigger>
-                            <Trigger Property="Height" Value="20">
-                                <Setter Property="MinHeight" Value="20"/>
+                            <Trigger Property="Height" Value="23">
+                                <Setter Property="MinHeight" Value="23"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.5"/>
@@ -196,16 +196,15 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Page.Resources>
-    <Grid Background="#FF1E1E1E">
-        <TabControl x:Name="tab1" HorizontalAlignment="Stretch" Margin="0,24,0,0" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" SelectedIndex="1" >
-            <TabItem Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="Forge" Margin="654,0,-654,-3" Height="Auto">
+    <Grid Background="Transparent">
+        <TabControl x:Name="tab1" HorizontalAlignment="Stretch" Margin="0,33,0,0" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" SelectedIndex="1" >
+            <TabItem Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="Forge" Margin="637,0,-637,-3" Height="Auto" FontFamily="Calibri Light">
                 <Grid/>
             </TabItem>
-            <TabItem x:Name="tabitem1" Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="原版" FontSize="12" Margin="654,1,-654,-3" Height="Auto">
+            <TabItem x:Name="tabitem1" Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="原版" FontSize="12" Margin="637,1,-637,-3" Height="Auto" FontFamily="Calibri Light">
                 <Grid>
-                    <ListView x:Name="lv1" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="772" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick">
+                    <ListView x:Name="lv1" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick" FontFamily="Calibri Light">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
@@ -218,7 +217,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="下载客户端" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontSize="18" FontFamily="Microsoft YaHei Light"/>
-        <Button x:Name="Back" Style="{StaticResource BtnInfoStyle}" Background="#FF1E1E1E" BorderBrush="#FF1E1E1E" Foreground="White" FontFamily="Microsoft YaHei Light" Margin="716,10,0,356" Width="Auto" Height="Auto" Content="回到主页" HorizontalAlignment="Left" FontSize="13" Click="Back_Click"/>
+        <Label Content="下载客户端" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontSize="18" FontFamily="Calibri Light"/>
+        <Button x:Name="Back" Style="{StaticResource BtnInfoStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" Margin="681,10,0,356" Width="Auto" Height="Auto" Content="回到主页" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Click="Back_Click"/>
     </Grid>
 </Page>
