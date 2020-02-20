@@ -179,7 +179,7 @@ namespace XMCL.Core
                             JObject jObject2 = JObject.Parse(jObject1["downloads"].ToString());
                             JObject jObject3 = JObject.Parse(jObject2["classifiers"].ToString());
                             JObject jObject4; try { jObject4 = JObject.Parse(jObject3["natives-windows"].ToString()); } catch { jObject4 = JObject.Parse(jObject3["natives-windows-32"].ToString()); }
-                            
+
                             string b1 = GamePath + "\\libraries\\" + vs[0].Replace(".", "\\") + "\\" + vs[1] + "\\" + vs[2] + "\\" + vs[1] + "-" + vs[2] + "-natives-windows.jar";
                             if (File.Exists(b1))
                             {

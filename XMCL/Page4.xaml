@@ -4,10 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:XMCL"
-      xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="XMCL.Page4"
+      xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="XMCL.Page4"
       mc:Ignorable="d" 
       d:DesignHeight="389" d:DesignWidth="743"
-      Title="Page4" Loaded="Page_Loaded">
+      Title="Page4" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
     <Page.Resources>
         <Style x:Key="TabItemStyle2" TargetType="{x:Type TabItem}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -112,12 +112,12 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="BorderThickness" TargetName="Bd" Value="1"></Setter>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FFA0A0A0"></Setter>
+                                <Setter Property="BorderThickness" TargetName="Bd" Value="1"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FFA0A0A0"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderThickness" TargetName="Bd" Value="1"></Setter>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FF707070"></Setter>
+                                <Setter Property="BorderThickness" TargetName="Bd" Value="1"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FF707070"/>
                             </Trigger>
                             <Trigger Property="Height" Value="Auto">
                                 <Setter Property="MinHeight" Value="20" />
@@ -198,11 +198,8 @@
         </Style>
     </Page.Resources>
     <Grid Background="Transparent">
-        <TabControl x:Name="tab1" HorizontalAlignment="Stretch" Margin="0,33,0,0" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" SelectedIndex="1" >
-            <TabItem Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="Forge" Margin="637,0,-637,-3" Height="Auto" FontFamily="Calibri Light">
-                <Grid/>
-            </TabItem>
-            <TabItem x:Name="tabitem1" Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="原版" FontSize="12" Margin="637,1,-637,-3" Height="Auto" FontFamily="Calibri Light">
+        <TabControl x:Name="tab1" HorizontalAlignment="Stretch" Margin="0,33,0,0" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" SelectedIndex="0" >
+            <TabItem x:Name="tabitem1" Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="原版" FontSize="12" Margin="570,0,-570,-2" Height="Auto" FontFamily="Calibri Light">
                 <Grid>
                     <ListView x:Name="lv1" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick" FontFamily="Calibri Light">
                         <ListView.View>
@@ -210,6 +207,34 @@
                                 <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
                                 <GridViewColumn Header="正式/快照" Width="70" DisplayMemberBinding="{Binding T2}"/>
                                 <GridViewColumn x:Name="GV1" Header="地址" Width="524" DisplayMemberBinding="{Binding T3}"/>
+                                <GridViewColumn Header="时间" Width="100" DisplayMemberBinding="{Binding T4}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="Forge" Margin="570,0,-569,-3" Height="Auto" FontFamily="Calibri Light">
+                <Grid>
+                    <ListView x:Name="lv2" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick" FontFamily="Calibri Light" Margin="0,0,0,-9">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
+                                <GridViewColumn Header="正式/快照" Width="70" DisplayMemberBinding="{Binding T2}"/>
+                                <GridViewColumn x:Name="GV2" Header="地址" Width="524" DisplayMemberBinding="{Binding T3}"/>
+                                <GridViewColumn Header="时间" Width="100" DisplayMemberBinding="{Binding T4}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="Optifine" Margin="569,0,-570,-3" Height="Auto" FontFamily="Calibri Light">
+                <Grid>
+                    <ListView x:Name="lv3" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick" FontFamily="Calibri Light" Margin="0,0,0,-9">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
+                                <GridViewColumn Header="正式/快照" Width="70" DisplayMemberBinding="{Binding T2}"/>
+                                <GridViewColumn x:Name="GV3" Header="地址" Width="524" DisplayMemberBinding="{Binding T3}"/>
                                 <GridViewColumn Header="时间" Width="100" DisplayMemberBinding="{Binding T4}"/>
                             </GridView>
                         </ListView.View>

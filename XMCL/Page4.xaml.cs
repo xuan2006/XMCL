@@ -15,6 +15,7 @@ namespace XMCL
     /// </summary>
     public partial class Page4 : Page
     {
+        Task task;
         List<string> T = new List<string>();
         public Page4()
         {
@@ -23,7 +24,7 @@ namespace XMCL
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Task task = new Task(() =>
+            task = new Task(() =>
             {
                 string[] vs = XMCL.Core.Tools.GetVersionsListAll().ToArray();
                 for (int i = 0; i < vs.Count(); i++)
@@ -57,6 +58,11 @@ namespace XMCL
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Page1.xaml", UriKind.Relative));
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            task.Dispose();
         }
     }
 }

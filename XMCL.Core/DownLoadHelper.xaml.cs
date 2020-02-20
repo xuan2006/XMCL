@@ -15,6 +15,10 @@ namespace XMCL.Core
         public List<string> AssetsList = new List<string>();
         public List<string> JarURLsList = new List<string>();
         public List<string> AssetURLsList = new List<string>();
+
+        Task task1;
+        Task task;
+
         public DownLoadHelper()
         {
             InitializeComponent();
@@ -59,8 +63,8 @@ namespace XMCL.Core
                     {
                         label.Content = "正在下载..." + percent.ToString() + "%    " + System.IO.Path.GetFileName(URL);
                     }));
-                    System.Windows.Forms.Application.DoEvents(); //必须加注这句代码，否则label1将因为循环执行太快而来不及显示信息
                 }
+                myrp.Dispose();
                 so.Close();
                 st.Close();
             }
@@ -72,7 +76,7 @@ namespace XMCL.Core
         public void start()
         {
             int a = 0;
-            Task task = new Task(() =>
+            task = new Task(() =>
             {
                 for (int i = 0; i < JarsList.Count; i++)
                 {
@@ -93,7 +97,7 @@ namespace XMCL.Core
                 }));
             });
             task.Start();
-            Task task1 = new Task(() =>
+            task1 = new Task(() =>
             {
                 for (int i = 0; i < AssetsList.Count; i++)
                 {
@@ -116,6 +120,12 @@ namespace XMCL.Core
             task1.Start();
             this.ShowDialog();
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            task.Dispose();
+            task1.Dispose();
         }
     }
 }

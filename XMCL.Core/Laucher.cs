@@ -8,6 +8,17 @@ namespace XMCL.Core
     public class Check
     {
         public static bool CanLauch = true;
+        public static bool check()
+        {
+            bool a;
+            a = Directory.Exists(Value.GamePath);
+            if (a)
+                a = File.Exists(Value.JavaPath);
+            if (a)
+                if (Value.Selected_Version.Length == 0)
+                    a = false;
+            return a;
+        }
     }
     public class Game
     {
@@ -16,34 +27,41 @@ namespace XMCL.Core
         static Process process = new Process();
         public static void Run()
         {
-            downLoadHelper.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-            Value.Resource();
-            string A = Value.Arguments();
-            downLoadHelper.start();
-            System.IO.File.WriteAllText(Directory.GetCurrentDirectory() + "\\start.log", "java " + A);
-            DelectDir(Value.GamePath + "\\bin");
-            for (int i = 0; i < ZipList.Count; i++)
+            if (Check.check())
             {
-                if (Directory.Exists(Value.GamePath + "\\bin\\META-INF"))
-                    DelectDir(Value.GamePath + "\\bin\\META-INF");
-                try { ZipFile.ExtractToDirectory(ZipList[i], Value.GamePath + "\\bin"); } catch { }
-            }
-            if (Check.CanLauch)
-            {
-                process.StartInfo.FileName = Value.JavaPath;
-                process.StartInfo.Arguments = A;
-                process.Start();
+                downLoadHelper.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+                Value.Resource();
+                string A = Value.Arguments();
+                downLoadHelper.start();
+                System.IO.File.WriteAllText(Directory.GetCurrentDirectory() + "\\start.log", "java " + A);
+                DelectDir(Value.GamePath + "\\bin");
+                for (int i = 0; i < ZipList.Count; i++)
+                {
+                    if (Directory.Exists(Value.GamePath + "\\bin\\META-INF"))
+                        DelectDir(Value.GamePath + "\\bin\\META-INF");
+                    try { ZipFile.ExtractToDirectory(ZipList[i], Value.GamePath + "\\bin"); } catch { }
+                }
+                if (Check.CanLauch)
+                {
+                    process.StartInfo.FileName = Value.JavaPath;
+                    process.StartInfo.Arguments = A;
+                    process.Start();
+                }
+                else
+                {
+                    downLoadHelper.Owner.Activate();
+                    System.Windows.MessageBox.Show(Error.ToString());
+                    Error = new StringBuilder();
+                    Check.CanLauch = true;
+                }
+                Window window = downLoadHelper.Owner;
+                downLoadHelper = new DownLoadHelper();
+                downLoadHelper.Owner = window;
             }
             else
             {
-                downLoadHelper.Owner.Activate();
-                System.Windows.MessageBox.Show(Error.ToString());
-                Error = new StringBuilder();
-                Check.CanLauch = true;
+                MessageBox.Show("无法启动，请检查\r\n1.游戏目录是否正确\r\n2.java目录是否正确\r\n3.是否选择启动的版本");
             }
-            Window window = downLoadHelper.Owner;
-            downLoadHelper = new DownLoadHelper();
-            downLoadHelper.Owner = window;
         }
         public static void Stop()
         {

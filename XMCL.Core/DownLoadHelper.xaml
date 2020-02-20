@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         WindowStyle="None"
-        Height="105.873" Width="345">
+        Height="105.873" Width="345" Closing="Window_Closing">
     <Grid Background="#FF707070">
         <Grid Margin="1,1,1,1" Background="#FF1E1E1E">
             <Label x:Name="Label1" Content="正在下载" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="323" Height="23" Foreground="White" FontFamily="Calibri Light" FontSize="11"/>

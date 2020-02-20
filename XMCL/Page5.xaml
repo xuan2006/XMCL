@@ -39,7 +39,6 @@
         </Style>
         <ContextMenu x:Key="ContextMenu">
             <MenuItem Name="Del" Header="删除版本" Click="Del_Click"/>
-            <MenuItem Name="ReSetUp" Header="重新安装"/>
             <MenuItem Name="F5" Header="刷新版本列表" Click="F5_Click"/>
         </ContextMenu>
     </Page.Resources>
