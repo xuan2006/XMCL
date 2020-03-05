@@ -129,7 +129,6 @@
     <Reference Include="XMCL.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\XMCL.Core\XMCL.Core\bin\x64\Debug\XMCL.Core.dll</HintPath>
-      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
