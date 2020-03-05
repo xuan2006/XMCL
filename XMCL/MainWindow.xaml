@@ -457,7 +457,7 @@
             <Button Content="游戏设置" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="ToPage2" Margin="50,66,0,0" HorizontalContentAlignment="Left" FontFamily="Calibri Light" FontSize="14"/>
             <Button Content="版本管理" x:Name="ToPage5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="ToPage5_Click" Margin="50,101,0,0" HorizontalContentAlignment="Left" FontFamily="Calibri Light" FontSize="14"/>
             <Button Content="关于" x:Name="MenuButton_Copy3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="110" Height="35" Style="{StaticResource BtnInfoStyle}" Background="#00000000" Click="MenuButton_Click" Margin="50,0,0,0" FontFamily="Calibri Light" FontSize="14" HorizontalContentAlignment="Left"/>
-            <Grid HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.66,0.504">
+            <Grid HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.66,0.504" Margin="1,0,0,0">
                 <Rectangle Width="20" Height="2" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="17,19,13,0" />
                 <Rectangle Width="20" Height="2" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="17,14,13,0" />
                 <Rectangle Width="20" Height="2" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="17,9,13,0" />

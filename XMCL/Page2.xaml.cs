@@ -157,7 +157,7 @@ namespace XMCL
         }
         private void FindJava(object sender, RoutedEventArgs e)
         {
-            T2.Text = Java.ChooseJava();
+            try { T2.Text = Java.ChooseJava(); } catch { }
         }
     }
 }

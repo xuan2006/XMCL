@@ -126,6 +126,11 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
     </Reference>
+    <Reference Include="XMCL.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\XMCL.Core\XMCL.Core\bin\x64\Debug\XMCL.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -219,14 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="source\steve_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XMCL.Core\XMCL.Core.csproj">
-      <Project>{06c570b9-133b-4104-97f2-33c94ce15694}</Project>
-      <Name>XMCL.Core</Name>
-      <Private>False</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="source\load.gif" />

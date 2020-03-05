@@ -6,7 +6,6 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace XMCL
 {
@@ -39,22 +38,6 @@ namespace XMCL
             });
             task.Start();
         }
-
-        private void lv1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            int a = lv1.SelectedIndex;
-            string c = System.IO.Path.GetFileName(T[a]);
-            string b;
-            if (Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
-                b = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\.minecraft\\versions\\" + c.Substring(0, c.Length - 5) + "\\";
-            else b = Json.Read("Files", "GamePath") + "\\versions\\" + c.Substring(0, c.Length - 5) + "\\";
-            WebClient client = new WebClient();
-            if (Directory.Exists(b))
-            { }
-            else { Directory.CreateDirectory(b); }
-            client.DownloadFile(T[a], b + System.IO.Path.GetFileName(T[a]));
-            MessageBox.Show("下载完成");
-        }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Page1.xaml", UriKind.Relative));
@@ -63,6 +46,26 @@ namespace XMCL
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             task.Dispose();
+        }
+        private void ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            int a = lv1.SelectedIndex;
+            string c = System.IO.Path.GetFileName(T[a]);
+            string b;
+            if (Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
+                b = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\.minecraft\\versions\\" + c.Substring(0, c.Length - 5) + "\\";
+            else b = Json.Read("Files", "GamePath") + "\\versions\\" + c.Substring(0, c.Length - 5) + "\\";
+            WebClient client = new WebClient();
+            if (Directory.Exists(b))
+            { }
+            else { Directory.CreateDirectory(b); }
+            client.DownloadFile(T[a], b + System.IO.Path.GetFileName(T[a]));
+            MessageBox.Show("下载完成");
+        }
+
+        private void DownloadVersion_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

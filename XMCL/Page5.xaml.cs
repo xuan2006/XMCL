@@ -31,7 +31,11 @@ namespace XMCL
 
         private void Del_Click(object sender, RoutedEventArgs e)
         {
-            XMCL.Core.Game.DelectDir(Json.Read("Files", "GamePath")+"\\versions\\"+ListBox1.SelectedItem);
+            if(Convert.ToBoolean(Json.Read("Files", "UseDefaultDirectory")))
+            {
+                XMCL.Core.Game.DelectDir(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\.minecraft\\versions\\" + ListBox1.SelectedItem);
+            }
+            else XMCL.Core.Game.DelectDir(Json.Read("Files", "GamePath") + "\\versions\\" + ListBox1.SelectedItem);
             F5();
         }
 

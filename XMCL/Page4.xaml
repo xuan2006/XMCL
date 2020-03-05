@@ -196,12 +196,15 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <ContextMenu x:Key="ContextMenu">
+            <MenuItem Name="DownloadVersion" Header="下载" Click="ContextMenu_Click"/>
+        </ContextMenu>
     </Page.Resources>
     <Grid Background="Transparent">
-        <TabControl x:Name="tab1" HorizontalAlignment="Stretch" Margin="0,33,0,0" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" SelectedIndex="0" >
+        <TabControl x:Name="tab1" HorizontalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" SelectedIndex="0" Margin="0,26,0,30">
             <TabItem x:Name="tabitem1" Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="原版" FontSize="12" Margin="570,0,-570,-2" Height="Auto" FontFamily="Calibri Light">
                 <Grid>
-                    <ListView x:Name="lv1" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick" FontFamily="Calibri Light">
+                    <ListView x:Name="lv1" HorizontalAlignment="Left" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" FontFamily="Calibri Light" ContextMenu="{StaticResource ContextMenu}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
@@ -215,7 +218,7 @@
             </TabItem>
             <TabItem Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="Forge" Margin="570,0,-569,-3" Height="Auto" FontFamily="Calibri Light">
                 <Grid>
-                    <ListView x:Name="lv2" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick" FontFamily="Calibri Light" Margin="0,0,0,-9">
+                    <ListView x:Name="lv2" HorizontalAlignment="Left" Height="298" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" FontFamily="Calibri Light">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
@@ -229,7 +232,7 @@
             </TabItem>
             <TabItem Style="{DynamicResource ResourceKey=TabItemStyle2}" Header="Optifine" Margin="569,0,-570,-3" Height="Auto" FontFamily="Calibri Light">
                 <Grid>
-                    <ListView x:Name="lv3" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" MouseDoubleClick="lv1_MouseDoubleClick" FontFamily="Calibri Light" Margin="0,0,0,-9">
+                    <ListView x:Name="lv3" HorizontalAlignment="Left" Height="298" VerticalAlignment="Top" Width="737" Background="#FF1E1E1E" Foreground="White" BorderBrush="#FF707070" Style="{DynamicResource ListViewStyle1}" FontFamily="Calibri Light">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
@@ -244,5 +247,6 @@
         </TabControl>
         <Label Content="下载客户端" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" FontSize="18" FontFamily="Calibri Light"/>
         <Button x:Name="Back" Style="{StaticResource BtnInfoStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" Margin="681,10,0,356" Width="Auto" Height="Auto" Content="回到主页" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Click="Back_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,9" TextWrapping="Wrap" Text="Tips:右键选择下载" VerticalAlignment="Bottom" Foreground="White" FontFamily="Calibri Light" FontSize="14"/>
     </Grid>
 </Page>
