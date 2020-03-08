@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,7 +14,6 @@ namespace XMCL
     /// </summary>
     public partial class Page4 : Page
     {
-        Task task;
         List<string> T = new List<string>();
         public Page4()
         {
@@ -23,7 +22,7 @@ namespace XMCL
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            task = new Task(() =>
+            Thread thread = new Thread(() =>
             {
                 string[] vs = XMCL.Core.Tools.GetVersionsListAll().ToArray();
                 for (int i = 0; i < vs.Count(); i++)
@@ -36,17 +35,13 @@ namespace XMCL
                     T.Add(a1[2]);
                 }
             });
-            task.Start();
+            thread.Start();
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Page1.xaml", UriKind.Relative));
         }
 
-        private void Page_Unloaded(object sender, RoutedEventArgs e)
-        {
-            task.Dispose();
-        }
         private void ContextMenu_Click(object sender, RoutedEventArgs e)
         {
             int a = lv1.SelectedIndex;
@@ -61,11 +56,6 @@ namespace XMCL
             else { Directory.CreateDirectory(b); }
             client.DownloadFile(T[a], b + System.IO.Path.GetFileName(T[a]));
             MessageBox.Show("下载完成");
-        }
-
-        private void DownloadVersion_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

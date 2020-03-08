@@ -7,7 +7,7 @@
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="XMCL.Page4"
       mc:Ignorable="d" 
       d:DesignHeight="389" d:DesignWidth="743"
-      Title="Page4" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+      Title="Page4" Loaded="Page_Loaded">
     <Page.Resources>
         <Style x:Key="TabItemStyle2" TargetType="{x:Type TabItem}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -236,7 +236,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="版本" Width="78" DisplayMemberBinding="{Binding T1}"/>
-                                <GridViewColumn Header="正式/快照" Width="70" DisplayMemberBinding="{Binding T2}"/>
+                                <GridViewColumn Header="正式/测试" Width="70" DisplayMemberBinding="{Binding T2}"/>
                                 <GridViewColumn x:Name="GV3" Header="地址" Width="524" DisplayMemberBinding="{Binding T3}"/>
                                 <GridViewColumn Header="时间" Width="100" DisplayMemberBinding="{Binding T4}"/>
                             </GridView>
